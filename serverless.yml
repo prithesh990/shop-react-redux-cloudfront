@@ -1,3 +1,5 @@
+org: pithesh
+app: frontend-store
 service: prithesh-store-app
 
 frameworkVersion: "3"
