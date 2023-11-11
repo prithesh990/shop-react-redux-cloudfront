@@ -9,6 +9,11 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { theme } from "~/theme";
 import { worker } from "./mocks/browser";
 
+const setToken = () => {
+  const authToken = window.btoa("prithesh990:TEST_PASSWORD");
+  localStorage.setItem("authToken", `Basic ${authToken}`);
+};
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { refetchOnWindowFocus: false, retry: false, staleTime: Infinity },
@@ -16,8 +21,10 @@ const queryClient = new QueryClient({
 });
 
 // if (import.meta.env.DEV) {
-worker.start({ onUnhandledRequest: "bypass" });
+// worker.start({ onUnhandledRequest: "bypass" });
 // }
+
+setToken();
 
 const container = document.getElementById("app");
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
